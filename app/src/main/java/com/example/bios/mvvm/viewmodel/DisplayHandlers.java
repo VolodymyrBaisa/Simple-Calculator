@@ -19,4 +19,15 @@ public class DisplayHandlers {
         upperDisplay.setValue("");
         return true;
     }
+
+    public void onClickDisplay(View v){
+        Display display = Display.getInstance();
+        UpperDisplay upperDisplay = UpperDisplay.getInstance();
+
+        ExpressionBuilder expressionBuilder = ExpressionBuilder.getInstatnce();
+        expressionBuilder.delete();
+
+        display.setValue(expressionBuilder.toString());
+        upperDisplay.setValue(expressionBuilder.getExpression());
+    }
 }

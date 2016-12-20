@@ -7,7 +7,7 @@ package com.example.bios.mvvm.model;
 public class ExpressionBuilder {
     private static volatile ExpressionBuilder expressionBuilder;
     private final StringBuilder expression = new StringBuilder("0");
-    private String lastExpression;
+    private StringBuilder oldExpression;
 
     private ExpressionBuilder() {
     }
@@ -18,21 +18,31 @@ public class ExpressionBuilder {
                 return expressionBuilder = new ExpressionBuilder();
             }
         }
-
         return expressionBuilder;
     }
 
     public void append(String value) {
         expression.append(replaceAllSeparator(value));
-        lastExpression = expression.toString();
+        oldExpression = new StringBuilder(expression);
     }
 
-    public boolean contains(String value) {
-        return expression.indexOf(value) != -1;
+    public void setResult(String value){
+        clear();
+        expression.append(replaceAllSeparator(value));
     }
 
-    public String savedlastExp() {
-        return lastExpression;
+    public String getExpression() {
+        return oldExpression.toString();
+    }
+
+    public void delete() {
+        if (expression.length() != 0) {
+            expression.delete(expression.length() - 1, expression.length());
+        }
+
+        if(oldExpression.length() != 0){
+            oldExpression.delete(oldExpression.length() - 1, oldExpression.length());
+        }
     }
 
     public void clear() {
@@ -50,7 +60,7 @@ public class ExpressionBuilder {
         return expression.toString();
     }
 
-    private String replaceAllSeparator(String value){
+    private String replaceAllSeparator(String value) {
         return value.replaceAll(",", "");
     }
 }

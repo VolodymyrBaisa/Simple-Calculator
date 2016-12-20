@@ -29,7 +29,7 @@ public class CalculatorViewModel {
             }
             expressionBuilder.append(buttonText);
 
-            String upperScreen = Formatter.stringFormat(expressionBuilder.savedlastExp());
+            String upperScreen = Formatter.stringFormat(expressionBuilder.getExpression());
             String lowerScreen = Formatter.stringFormat(expressionBuilder.toString());
 
             display.setValue(upperScreen);
@@ -41,10 +41,8 @@ public class CalculatorViewModel {
         try {
             LinkedList<String> expressionList = Parser.parse(expressionBuilder.toString());
             String result = Formatter.doubleToString(calculatorModel.calculate(expressionList));
+            expressionBuilder.setResult(result);
             display.setValue(result);
-
-            expressionBuilder.clear();
-            expressionBuilder.append(result);
         } catch (NumberFormatException e) {
             display.setValue(ErrorMessage.NumberFormatException());
             expressionBuilder.clear();
