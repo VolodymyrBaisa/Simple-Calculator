@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical">
+
+            <include
+                android:id="@+id/display_activity"
+                layout="@layout/display_activity" />
+
+            <include
+                android:id="@+id/keyboard_activity"
+                layout="@layout/keyboard_activity" />
+    </LinearLayout>
+</layout>

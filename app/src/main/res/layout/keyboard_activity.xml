@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.bios.mvvm.viewmodel.CalculatorViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/seven"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="7" />
+
+            <Button
+                android:id="@+id/eight"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="8" />
+
+            <Button
+                android:id="@+id/nine"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="9" />
+
+            <Button
+                android:id="@+id/divide"
+                style="@style/KeyOperations"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="÷" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/four"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/five"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/six"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/multiply"
+                style="@style/KeyOperations"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="×" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/one"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/two"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/tree"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="3" />
+
+            <Button
+                android:id="@+id/subtract"
+                style="@style/KeyOperations"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="-" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/dot"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="." />
+
+            <Button
+                android:id="@+id/zero"
+                style="@style/KeyNumbers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/equal"
+                style="@style/KeyOperations"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickEqual}"
+                android:text="=" />
+
+            <Button
+                android:id="@+id/plus"
+                style="@style/KeyOperations"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{viewModel.onClickKeypad}"
+                android:text="+" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

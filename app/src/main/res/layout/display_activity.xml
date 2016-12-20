@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="display"
+            type="com.example.bios.mvvm.viewmodel.Display" />
+
+        <variable
+            name="upperDisplay"
+            type="com.example.bios.mvvm.viewmodel.UpperDisplay" />
+
+        <variable
+            name="displayHandlers"
+            type="com.example.bios.mvvm.viewmodel.DisplayHandlers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            style="@style/Display"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/upperExpressionDisplay"
+                style="@style/upperExpressionDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="30dip"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:onLongClick="@{displayHandlers::onLongClickDisplay}"
+                android:text="@{upperDisplay.value}"
+                app:font="@{`digital.ttf`}" />
+
+            <TextView
+                android:id="@+id/lowerExpressionDisplay"
+                style="@style/lowerExpressionDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="70dip"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/upperExpressionDisplay"
+                android:onLongClick="@{displayHandlers::onLongClickDisplay}"
+                android:text="@{display.empty ? `0` : display.value}"
+                app:font="@{`digital.ttf`}" />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

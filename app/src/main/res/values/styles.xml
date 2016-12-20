@@ -1,0 +1,45 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <style name="Display">
+        <item name="android:background">@drawable/screen_style</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="upperExpressionDisplay">
+        <item name="android:textColor">@color/colorTextDisplay</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">right|center</item>
+    </style>
+
+    <style name="lowerExpressionDisplay">
+        <item name="android:textColor">@color/colorTextDisplay</item>
+        <item name="android:textSize">80sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">right|top</item>
+        <item name="android:ems">10</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="KeyNumbers">
+        <item name="android:background">@drawable/black_button_selector</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+    <style name="KeyOperations">
+        <item name="android:background">@drawable/blue_grey_button_selector</item>
+        <item name="android:layout_margin">2dp</item>
+    </style>
+
+</resources>
