@@ -51,9 +51,6 @@ public class ExpressionBuilder implements Expression {
     public void clear() {
         expression.delete(0, expression.length());
         expression.setLength(0);
-
-        oldExpression.delete(0, oldExpression.length());
-        oldExpression.setLength(0);
     }
 
     public void reset() {
