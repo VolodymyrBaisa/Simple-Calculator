@@ -1,18 +1,21 @@
 package com.example.bios.mvvm.model;
 
+import com.example.bios.mvvm.viewmodel.Expression;
+
 /**
  * Created by BIOS on 12/13/2016.
  */
 
-public class ExpressionBuilder {
+public class ExpressionBuilder implements Expression {
     private static volatile ExpressionBuilder expressionBuilder;
     private final StringBuilder expression = new StringBuilder("0");
     private StringBuilder oldExpression;
 
     private ExpressionBuilder() {
+        oldExpression = new StringBuilder(expression);
     }
 
-    public static ExpressionBuilder getInstatnce() {
+    public static ExpressionBuilder getInstance() {
         if (expressionBuilder == null) {
             synchronized (ExpressionBuilder.class) {
                 return expressionBuilder = new ExpressionBuilder();
@@ -48,6 +51,9 @@ public class ExpressionBuilder {
     public void clear() {
         expression.delete(0, expression.length());
         expression.setLength(0);
+
+        oldExpression.delete(0, oldExpression.length());
+        oldExpression.setLength(0);
     }
 
     public void reset() {

@@ -13,7 +13,7 @@ public class DisplayHandlers {
         Display display = Display.getInstance();
         UpperDisplay upperDisplay = UpperDisplay.getInstance();
 
-        ExpressionBuilder expressionBuilder = ExpressionBuilder.getInstatnce();
+        Expression expressionBuilder = ExpressionBuilder.getInstance();
         expressionBuilder.reset();
         display.setValue(expressionBuilder.toString());
         upperDisplay.setValue("");
@@ -24,7 +24,7 @@ public class DisplayHandlers {
         Display display = Display.getInstance();
         UpperDisplay upperDisplay = UpperDisplay.getInstance();
 
-        ExpressionBuilder expressionBuilder = ExpressionBuilder.getInstatnce();
+        Expression expressionBuilder = ExpressionBuilder.getInstance();
         expressionBuilder.delete();
 
         display.setValue(expressionBuilder.toString());

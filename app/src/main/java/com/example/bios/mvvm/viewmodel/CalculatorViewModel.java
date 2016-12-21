@@ -5,7 +5,6 @@ import android.widget.Button;
 
 import com.example.bios.mvvm.model.CalculatorModel;
 import com.example.bios.mvvm.model.ExpressionBuilder;
-import com.example.bios.mvvm.model.Operators;
 
 import java.util.LinkedList;
 
@@ -15,26 +14,30 @@ import java.util.LinkedList;
 
 public class CalculatorViewModel {
     private CalculatorModel calculatorModel = new CalculatorModel();
-    private ExpressionBuilder expressionBuilder = ExpressionBuilder.getInstatnce();
+    private Expression expressionBuilder = ExpressionBuilder.getInstance();
     private Display display = Display.getInstance();
     private UpperDisplay upperDisplay = UpperDisplay.getInstance();
 
     public void onClickKeypad(View v) {
-        String buttonText = ((Button) v).getText().toString();
-        if (!(isLastIndexOperator(expressionBuilder.toString()) && isLastIndexOperator(buttonText) ||
-                isLastIndexDot(expressionBuilder.toString()) && isLastIndexDot(buttonText))) {
+        String value = ((Button) v).getText().toString();
 
-            if (isFirstZero(expressionBuilder.toString()) && !isFractional(buttonText)) {
-                expressionBuilder.clear();
-            }
-            expressionBuilder.append(buttonText);
+        LinkedList<String> expressionList = Parser.parse(expressionBuilder.toString());
+        ValidationArguments validationArguments = ValidationArguments.getInstance();
 
-            String upperScreen = Formatter.stringFormat(expressionBuilder.getExpression());
-            String lowerScreen = Formatter.stringFormat(expressionBuilder.toString());
-
-            display.setValue(upperScreen);
-            upperDisplay.setValue(lowerScreen);
+        if (validationArguments.isEqualsZero(expressionBuilder.toString())
+                && !validationArguments.isFractional(value)) {
+            expressionBuilder.clear();
         }
+
+        boolean validated = validationArguments.validate(expressionList, value);
+        if (validated) expressionBuilder.append(value);
+
+        String upperScreen = Formatter.stringFormat(expressionBuilder.getExpression());
+        String lowerScreen = Formatter.stringFormat(expressionBuilder.toString());
+
+        display.setValue(upperScreen);
+        upperDisplay.setValue(lowerScreen);
+
     }
 
     public void onClickEqual(View v) {
@@ -47,46 +50,5 @@ public class CalculatorViewModel {
             display.setValue(ErrorMessage.NumberFormatException());
             expressionBuilder.clear();
         }
-    }
-
-    private boolean isLastIndexDot(String exp) {
-        if (exp.length() != 0) {
-            String dot = ".";
-            String lastIndex = String.valueOf(exp.charAt(exp.length() - 1));
-            return lastIndex.equals(dot);
-        }
-
-        return false;
-    }
-
-    private boolean isLastIndexOperator(String exp) {
-        if (exp.length() != 0) {
-            String divide = Operators.DIVIDE.getOperator();
-            String multiply = Operators.MULTIPLY.getOperator();
-            String subtract = Operators.SUBTRACT.getOperator();
-            String plus = Operators.PLUS.getOperator();
-
-            String lastIndex = String.valueOf(exp.charAt(exp.length() - 1));
-
-            if (lastIndex.equals(divide) || lastIndex.equals(multiply) ||
-                    lastIndex.equals(subtract) || lastIndex.equals(plus)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean isFractional(String text) {
-        if (text.contains(".")) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isFirstZero(String exp) {
-        if (!exp.isEmpty() && exp.equals("0")) {
-            return true;
-        }
-        return false;
     }
 }
