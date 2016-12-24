@@ -18,40 +18,29 @@
     </data>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
             style="@style/Display"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:onClick="@{displayHandlers.onClickDisplay}"
+            android:onLongClick="@{displayHandlers::onLongClickDisplay}">
 
             <me.grantland.widget.AutofitTextView
                 android:id="@+id/upperExpressionDisplay"
                 style="@style/upperExpressionDisplay"
                 android:layout_width="match_parent"
-                android:layout_height="30dip"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:onClick="@{displayHandlers.onClickDisplay}"
-                android:onLongClick="@{displayHandlers::onLongClickDisplay}"
+                android:layout_height="wrap_content"
                 android:text="@{upperDisplay.value}"
+                app:minTextSize="20sp"
                 app:font="@{`digital.ttf`}" />
 
             <me.grantland.widget.AutofitTextView
                 android:id="@+id/lowerExpressionDisplay"
                 style="@style/lowerExpressionDisplay"
                 android:layout_width="match_parent"
-                android:layout_height="70dip"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/upperExpressionDisplay"
-                android:onClick="@{displayHandlers.onClickDisplay}"
-                android:onLongClick="@{displayHandlers::onLongClickDisplay}"
+                android:layout_height="wrap_content"
                 android:text="@{display.empty ? `0` : display.value}"
+                app:minTextSize="50sp"
                 app:font="@{`digital.ttf`}" />
-        </RelativeLayout>
     </LinearLayout>
 </layout>
