@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -20,16 +20,18 @@
         <item name="android:textColor">@color/colorTextDisplay</item>
         <item name="android:textSize">25sp</item>
         <item name="android:singleLine">true</item>
-        <item name="android:gravity">right|center</item>
+        <item name="android:gravity">center_vertical|right</item>
+        <item name="minTextSize">8sp</item>
     </style>
 
     <style name="lowerExpressionDisplay">
         <item name="android:textColor">@color/colorTextDisplay</item>
         <item name="android:textSize">80sp</item>
         <item name="android:singleLine">true</item>
-        <item name="android:gravity">right|top</item>
+        <item name="android:gravity">center_vertical|right</item>
         <item name="android:ems">10</item>
         <item name="android:maxLines">1</item>
+        <item name="minTextSize">8sp</item>
     </style>
 
     <style name="KeyNumbers">
