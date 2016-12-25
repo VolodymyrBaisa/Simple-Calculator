@@ -8,3 +8,6 @@
 </ul>
 <BR />
 [Download](https://github.com/VolodymyrBaisa/Simple-Calculator/blob/master/Simple%20Calculator.apk)
+<BR />
+<p>For reset screen need hold finger on number screen</p>
+<p>For delete number need just tab on number screen</p>
