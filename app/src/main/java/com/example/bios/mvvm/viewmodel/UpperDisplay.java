@@ -17,12 +17,12 @@ public class UpperDisplay extends BaseObservable {
     }
 
     public static UpperDisplay getInstance() {
-        synchronized (UpperDisplay.class) {
-            if (upperDisplay == null) {
+        if (upperDisplay == null) {
+            synchronized (UpperDisplay.class) {
                 return upperDisplay = new UpperDisplay();
-            } else {
-                return upperDisplay;
             }
+        } else {
+            return upperDisplay;
         }
     }
 

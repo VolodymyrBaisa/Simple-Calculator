@@ -1,7 +1,5 @@
 package com.example.bios.mvvm.viewmodel;
 
-import com.example.bios.mvvm.model.ExpressionBuilder;
-
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -30,7 +28,7 @@ public class Formatter {
                 String oldChar = m.group();
                 String newChar = doubleToString(Double.parseDouble(oldChar));
 
-                if(!isFractional(oldChar)) {
+                if (!isFractional(oldChar)) {
                     replace(oldChar, newChar, expression);
                 }
             }

@@ -17,12 +17,12 @@ public class Display extends BaseObservable {
     }
 
     public static Display getInstance() {
-        synchronized (Display.class) {
-            if (display == null) {
+        if (display == null) {
+            synchronized (Display.class) {
                 return display = new Display();
-            } else {
-                return display;
             }
+        } else {
+            return display;
         }
     }
 
@@ -36,7 +36,7 @@ public class Display extends BaseObservable {
         display.notifyPropertyChanged(BR.value);
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return this.value == null || this.value.isEmpty();
     }
 }
