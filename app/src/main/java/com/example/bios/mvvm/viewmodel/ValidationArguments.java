@@ -74,8 +74,11 @@ public class ValidationArguments {
     }
 
     public boolean ifLastIndexIsDot(String value) {
-        String dot = ".";
-        return String.valueOf(value.charAt(value.length() - 1)).equals(dot);
+        if(!value.isEmpty()) {
+            String dot = ".";
+            return String.valueOf(value.charAt(value.length() - 1)).equals(dot);
+        }
+        return false;
     }
 
     public boolean isFractional(String text) {
