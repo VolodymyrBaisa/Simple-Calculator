@@ -35,8 +35,10 @@ public class CalculatorViewModel {
         String upperScreen = Formatter.stringFormat(expressionBuilder.getExpression());
         String lowerScreen = Formatter.stringFormat(expressionBuilder.toString());
 
-        display.setValue(upperScreen);
-        upperDisplay.setValue(lowerScreen);
+        display.setValue(lowerScreen);
+        upperDisplay.setValue(upperScreen);
+
+        System.out.println(lowerScreen);
 
     }
 
