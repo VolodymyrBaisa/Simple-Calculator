@@ -25,7 +25,7 @@ public class CalculatorViewModel {
         ValidationArguments validationArguments = ValidationArguments.getInstance();
 
         if (validationArguments.isEqualsZero(expressionBuilder.toString())
-                && !validationArguments.isFractional(value)) {
+                && !validationArguments.isFractional(value) && !validationArguments.isContainsOperator(value)) {
             expressionBuilder.clear();
         }
 
