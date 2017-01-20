@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 
 public class Parser {
-    private static final String regex = "(^-[\\d.]+)|([\\d.]+)|(\\d+)|(\\d+)|([+-÷×/^])";
+    private static final String regex = "(^-[\\d.]+)|([\\d.]+)|([+-÷×/^])";
 
     private Parser() {
     }
