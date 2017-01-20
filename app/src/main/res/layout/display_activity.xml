@@ -39,7 +39,7 @@
                 style="@style/lowerExpressionDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{display.empty ? `0` : display.value}"
+                android:text="@{display.value}"
                 app:minTextSize="50sp"
                 app:font="@{`digital.ttf`}" />
     </LinearLayout>

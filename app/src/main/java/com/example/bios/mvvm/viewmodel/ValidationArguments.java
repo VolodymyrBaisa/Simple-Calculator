@@ -28,15 +28,15 @@ public class ValidationArguments {
         if (!exp.isEmpty()) {
             String value = exp.getLast();
 
-            if ((isContainsDot(value) || isContainsOperator(value)) && isContainsDot(nextValue)) {
+            if ((isContainsDot(value) || isEqualsOperator(value)) && isContainsDot(nextValue)) {
                 return false;
             }
 
-            if (ifLastIndexIsDot(value) && isContainsOperator(nextValue)) {
+            if (ifLastIndexIsDot(value) && isEqualsOperator(nextValue)) {
                 return false;
             }
 
-            if (isContainsOperator(value) && isContainsOperator(nextValue)) {
+            if (isEqualsOperator(value) && isEqualsOperator(nextValue)) {
                 return false;
             }
 
@@ -53,14 +53,14 @@ public class ValidationArguments {
         return value.contains(dot);
     }
 
-    public boolean isContainsOperator(String value) {
+    public boolean isEqualsOperator(String value) {
         String divide = Operators.DIVIDE.getOperator();
         String multiply = Operators.MULTIPLY.getOperator();
         String subtract = Operators.SUBTRACT.getOperator();
         String plus = Operators.PLUS.getOperator();
 
-        if (value.contains(divide) || value.contains(multiply) ||
-                value.contains(subtract) || value.contains(plus)) {
+        if (value.equals(divide) || value.equals(multiply) ||
+                value.equals(subtract) || value.equals(plus)) {
             return true;
         }
         return false;

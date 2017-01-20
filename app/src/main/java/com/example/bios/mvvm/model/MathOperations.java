@@ -29,7 +29,7 @@ public class MathOperations {
         }
     }
 
-    public Double result() throws ArithmeticException, NumberFormatException{
+    public Double result() throws ArithmeticException, NumberFormatException {
         final StringBuilder result = new StringBuilder();
         if (!list.isEmpty()) {
             LinkedList<String> values = calculateValue();
@@ -62,65 +62,55 @@ public class MathOperations {
 
     private void divide() throws ArithmeticException, NumberFormatException {
         int operator = list.indexOf(Operators.DIVIDE.getOperator());
-        if (operator != -1) {
-            Double[] doubleValues = getValues(operator);
+        Double[] doubleValues = getValues(operator);
 
-            if (doubleValues.length != 0) {
-                double firstValue = doubleValues[0];
-                double secondValue = doubleValues[1];
-                double result = firstValue / secondValue;
-                list.set(operator - 1, String.valueOf(result));
-                remove(operator + 1, operator);
-                calculateValue();
-            }
+        if (doubleValues.length != 0) {
+            double firstValue = doubleValues[0];
+            double secondValue = doubleValues[1];
+            double result = firstValue / secondValue;
+            commitResult(result, operator);
+            calculateValue();
         }
     }
 
     private void multiply() throws ArithmeticException, NumberFormatException {
         int operator = list.indexOf(Operators.MULTIPLY.getOperator());
-        if (operator != -1) {
-            Double[] doubleValues = getValues(operator);
+        Double[] doubleValues = getValues(operator);
 
-            if (doubleValues.length != 0) {
-                double firstValue = doubleValues[0];
-                double secondValue = doubleValues[1];
-                double result = firstValue * secondValue;
-                list.set(operator - 1, String.valueOf(result));
-                remove(operator + 1, operator);
-                calculateValue();
-            }
+        if (doubleValues.length != 0) {
+            double firstValue = doubleValues[0];
+            double secondValue = doubleValues[1];
+            double result = firstValue * secondValue;
+            commitResult(result, operator);
+            calculateValue();
         }
     }
 
     private void subtract() throws ArithmeticException, NumberFormatException {
         int operator = list.indexOf(Operators.SUBTRACT.getOperator());
-        if (operator != -1) {
-            Double[] doubleValues = getValues(operator);
+        Double[] doubleValues = getValues(operator);
 
-            if (doubleValues.length != 0) {
-                double firstValue = doubleValues[0];
-                double secondValue = doubleValues[1];
-                double result = firstValue - secondValue;
-                list.set(operator - 1, String.valueOf(result));
-                remove(operator + 1, operator);
-                calculateValue();
-            }
+        if (doubleValues.length != 0)
+        {
+            double firstValue = doubleValues[0];
+            double secondValue = doubleValues[1];
+            double result = firstValue - secondValue;
+            commitResult(result, operator);
+            calculateValue();
         }
+
     }
 
     private void plus() throws ArithmeticException, NumberFormatException {
         int operator = list.indexOf(Operators.PLUS.getOperator());
-        if (operator != -1) {
-            Double[] doubleValues = getValues(operator);
+        Double[] doubleValues = getValues(operator);
 
-            if (doubleValues.length != 0) {
-                double firstValue = doubleValues[0];
-                double secondValue = doubleValues[1];
-                double result = firstValue + secondValue;
-                list.set(operator - 1, String.valueOf(result));
-                remove(operator + 1, operator);
-                calculateValue();
-            }
+        if (doubleValues.length != 0) {
+            double firstValue = doubleValues[0];
+            double secondValue = doubleValues[1];
+            double result = firstValue + secondValue;
+            commitResult(result, operator);
+            calculateValue();
         }
     }
 
@@ -134,7 +124,9 @@ public class MathOperations {
         return new Double[]{};
     }
 
-    private void remove(int... values) {
+    private void commitResult(double result, int operator) {
+        list.set(operator - 1, String.valueOf(result));
+        int values[] = {operator + 1, operator};
         for (int value : values) {
             list.remove(value);
         }

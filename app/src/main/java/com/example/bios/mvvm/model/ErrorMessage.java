@@ -1,4 +1,4 @@
-package com.example.bios.mvvm.viewmodel;
+package com.example.bios.mvvm.model;
 
 /**
  * Created by BIOS on 12/12/2016.

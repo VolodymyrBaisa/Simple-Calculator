@@ -4,7 +4,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.bios.mvvm.model.CalculatorModel;
+import com.example.bios.mvvm.model.ErrorMessage;
 import com.example.bios.mvvm.model.ExpressionBuilder;
+import com.example.bios.mvvm.utils.Formatter;
+import com.example.bios.mvvm.utils.Parser;
 
 import java.util.LinkedList;
 
@@ -15,7 +18,7 @@ import java.util.LinkedList;
 public class CalculatorViewModel {
     private CalculatorModel calculatorModel = new CalculatorModel();
     private Expression expressionBuilder = ExpressionBuilder.getInstance();
-    private Display display = Display.getInstance();
+    private static Display display = Display.getInstance();
     private UpperDisplay upperDisplay = UpperDisplay.getInstance();
 
     public void onClickKeypad(View v) {
@@ -25,7 +28,7 @@ public class CalculatorViewModel {
         ValidationArguments validationArguments = ValidationArguments.getInstance();
 
         if (validationArguments.isEqualsZero(expressionBuilder.toString())
-                && !validationArguments.isFractional(value) && !validationArguments.isContainsOperator(value)) {
+                && !validationArguments.isFractional(value) && !validationArguments.isEqualsOperator(value)) {
             expressionBuilder.clear();
         }
 
@@ -37,9 +40,6 @@ public class CalculatorViewModel {
 
         display.setValue(lowerScreen);
         upperDisplay.setValue(upperScreen);
-
-        System.out.println(lowerScreen);
-
     }
 
     public void onClickEqual(View v) {

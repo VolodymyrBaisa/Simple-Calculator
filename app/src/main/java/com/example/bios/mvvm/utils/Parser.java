@@ -1,4 +1,4 @@
-package com.example.bios.mvvm.viewmodel;
+package com.example.bios.mvvm.utils;
 
 import java.util.LinkedList;
 import java.util.regex.Matcher;
@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  */
 
 public class Parser {
-    private static final String regex = "(\\d+\\.\\d+)|(^-\\d+\\.\\d+)|(\\d+)|([+-÷×///^])|([/(/)])";
+    private static final String regex = "(^-[\\d.]+)|([\\d.]+)|(\\d+)|(\\d+)|([+-÷×/^])";
 
     private Parser() {
     }

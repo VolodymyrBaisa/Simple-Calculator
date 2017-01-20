@@ -10,7 +10,7 @@ import com.example.bios.mvvm.BR;
  */
 
 public class Display extends BaseObservable {
-    private String value;
+    private String value = "0";
     private static volatile Display display;
 
     private Display() {
