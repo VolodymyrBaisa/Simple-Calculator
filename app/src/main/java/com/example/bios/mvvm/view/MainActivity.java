@@ -22,22 +22,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         MainLayoutBinding binding = DataBindingUtil.setContentView(this, R.layout.main_layout);
+        setViewModel(binding);
+        setCalculatorDisplay(binding);
+        setUpperCalculatorDisplay(binding);
+        setCalculatorDisplayHandlers(binding);
+    }
 
-        CalculatorViewModel mainViewModel = new CalculatorViewModel();
-        binding.keyboardActivity.setViewModel(mainViewModel);
-
-        Display display = Display.getInstance();
-        binding.displayActivity.setDisplay(display);
-
-        UpperDisplay upperDisplay = UpperDisplay.getInstance();
-        binding.displayActivity.setUpperDisplay(upperDisplay);
-
+    private void setCalculatorDisplayHandlers(MainLayoutBinding binding) {
         DisplayHandlers dispalyHandlers = new DisplayHandlers();
         binding.displayActivity.setDisplayHandlers(dispalyHandlers);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    private void setUpperCalculatorDisplay(MainLayoutBinding binding) {
+        UpperDisplay upperDisplay = UpperDisplay.getInstance();
+        binding.displayActivity.setUpperDisplay(upperDisplay);
+    }
+
+    private void setCalculatorDisplay(MainLayoutBinding binding) {
+        Display display = Display.getInstance();
+        binding.displayActivity.setDisplay(display);
+    }
+
+    private void setViewModel(MainLayoutBinding binding) {
+        CalculatorViewModel mainViewModel = new CalculatorViewModel();
+        binding.keyboardActivity.setViewModel(mainViewModel);
     }
 }
