@@ -43,8 +43,15 @@ public class ValidationArguments {
             if (isEqualsZero(value) && isEqualsZero(nextValue)) {
                 return false;
             }
-        }
+        } else {
+            if (isContainsSubtract(nextValue)) {
+                return true;
+            }
 
+            if (isEqualsOperator(nextValue) || isContainsDot(nextValue)) {
+                return false;
+            }
+        }
         return true;
     }
 
@@ -66,6 +73,11 @@ public class ValidationArguments {
         return false;
     }
 
+    public boolean isContainsSubtract(String value) {
+        String subtract = Operators.SUBTRACT.getOperator();
+        return value.contains(subtract);
+    }
+
     public boolean isEqualsZero(String value) {
         if (!value.isEmpty() && value.equals("0")) {
             return true;
@@ -74,7 +86,7 @@ public class ValidationArguments {
     }
 
     public boolean ifLastIndexIsDot(String value) {
-        if(!value.isEmpty()) {
+        if (!value.isEmpty()) {
             String dot = ".";
             return String.valueOf(value.charAt(value.length() - 1)).equals(dot);
         }
